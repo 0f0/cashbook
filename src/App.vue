@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" />
+    <el-button type="primary">开始</el-button>
     <router-view />
   </div>
 </template>
