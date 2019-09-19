@@ -5,6 +5,8 @@ import 'nprogress/nprogress.css'
 Vue.use(Router)
 
 const Login = () => import('@/views/login')
+const Manage = () => import('@/views/manage')
+const Home = () => import('@/views/home')
 
 const router = new Router({
   mode: 'history',
@@ -16,6 +18,22 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/manage',
+      component: Manage,
+      children: [{
+          path: '/',
+          redirect: 'home'
+        },
+        {
+          path: 'home',
+          component: Home,
+          meta: {
+            title: '首页'
+          }
+        }
+      ]
     }
   ]
 })
