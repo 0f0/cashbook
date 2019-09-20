@@ -7,6 +7,11 @@ Vue.use(Router)
 const Login = () => import('@/views/login')
 const Manage = () => import('@/views/manage')
 const Home = () => import('@/views/home')
+const Tallybook = () => import('@/views/tallybook/tallybook')
+const Statement = () => import('@/views/statement/statement')
+const Template = () => import('@/views/template/template')
+const PersonProperty = () => import('@/views/property/personproperty')
+const Classes = () => import('@/views/classes/classes')
 
 const router = new Router({
   mode: 'history',
@@ -32,6 +37,26 @@ const router = new Router({
           meta: {
             title: '首页'
           }
+        },
+        {
+          path: 'tallybook',
+          component: Tallybook
+        },
+        {
+          path: 'statement',
+          component: Statement
+        },
+        {
+          path: 'template',
+          component: Template
+        },
+        {
+          path: 'property',
+          component: PersonProperty
+        },
+        {
+          path: 'classes',
+          component: Classes
         }
       ]
     }

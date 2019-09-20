@@ -1,13 +1,80 @@
 <template>
   <div class="nav">
-    <p>个人资金管理系统</p>
+    <p class="nav-p">个人资金管理系统</p>
+    <ul>
+      <li
+        v-for="item in menulist"
+        :key="item.id"
+        :class="['menuli',{'menuli-hover':item.select}]"
+        @click="selectitem(item)"
+      >
+        <slot :item="item"></slot>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      menulist: [
+        {
+          id: "home",
+          text: "首页",
+          path: "home",
+          icon: "iconshouye",
+          select: true
+        },
+        {
+          id: "522",
+          text: "记账本",
+          path: "tallybook",
+          icon: "iconjizhang",
+          select: false
+        },
+        {
+          id: "524",
+          text: "账本模板",
+          path: "template",
+          icon: "iconmoban",
+          select: false
+        },
+        {
+          id: "525",
+          text: "个人资产",
+          path: "property",
+          icon: "iconzichan",
+          select: false
+        },
+        {
+          id: "523",
+          text: "账本类别",
+          path: "classes",
+          icon: " iconleibie",
+          select: false
+        },
+        {
+          id: "527",
+          text: "统计报表",
+          path: "statement",
+          icon: "iconbaobiao",
+          select: false
+        }
+      ]
+    };
+  },
+  methods: {
+    selectitem(item) {
+      this.$router.push({ path: `/manage/${item.path}` });
+      this.menulist.map(menu => {
+        if (menu.id !== item.id) {
+          menu.select = false;
+        } else {
+          menu.select = true;
+        }
+      });
+    }
   }
 };
 </script>
@@ -19,5 +86,32 @@ export default {
   color: #fff;
   //   ##1b222e
   //   #1a2942
+  .nav-p {
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  .menuli {
+    height: 60px;
+    line-height: 60px;
+    font-size: 16px;
+  }
+  .menuli-hover {
+    position: relative;
+    background: rgba(255, 255, 255, 0.3);
+    &:before {
+      content: "";
+      position: absolute;
+      width: 3px;
+      height: 60px;
+      background: #fff;
+    }
+  }
 }
 </style>

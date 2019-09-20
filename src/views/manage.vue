@@ -1,6 +1,11 @@
 <template>
   <div class="manage">
-    <custome-nav></custome-nav>
+    <custome-nav>
+      <div class="nav-text" slot-scope="props">
+        <i :class="['iconfont', props.item.icon]"></i>
+        {{props.item.text}}
+      </div>
+    </custome-nav>
     <div class="manage-right">
       <custome-header></custome-header>
       <router-view></router-view>
@@ -27,6 +32,13 @@ export default {
 .manage {
   height: 100vh;
   display: flex;
+  .nav-text {
+    margin-left: 20px;
+    i {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+  }
   .manage-right {
     flex: 1;
     background: #f4f4f4;
