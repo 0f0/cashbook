@@ -34,29 +34,50 @@ const router = new Router({
         {
           path: 'home',
           component: Home,
+          name: 'home',
           meta: {
-            title: '首页'
+            title: ['首页']
           }
         },
         {
           path: 'tallybook',
-          component: Tallybook
+          component: Tallybook,
+          name: 'tallybook',
+          meta: {
+            title: ['记账本']
+          }
         },
         {
           path: 'statement',
-          component: Statement
+          component: Statement,
+          name: 'statement',
+          meta: {
+            title: ['统计报表']
+          }
         },
         {
           path: 'template',
-          component: Template
+          component: Template,
+          name: 'template',
+          meta: {
+            title: ['账本模板']
+          }
         },
         {
           path: 'property',
-          component: PersonProperty
+          component: PersonProperty,
+          name: 'property',
+          meta: {
+            title: ['个人资产']
+          }
         },
         {
           path: 'classes',
-          component: Classes
+          component: Classes,
+          name: 'classes',
+          meta: {
+            title: ['账本类别']
+          }
         }
       ]
     }

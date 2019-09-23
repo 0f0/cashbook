@@ -64,9 +64,29 @@ export default {
       ]
     };
   },
+  mounted() {
+    console.log("mout");
+    this.addinitname();
+  },
+
   methods: {
+    addinitname() {
+      // this.$router.push({ path: "/manage/home" });
+      this.$store.commit("ADD_ROUTER_NAME", this.$route.meta.title);
+      this.menulist.map(item => {
+        if (item.path === this.$route.name) {
+          item.select = true;
+        } else {
+          item.select = false;
+        }
+      });
+    },
     selectitem(item) {
+      let path = `/manage/${item.path}`;
+      if (this.$route.path === path) return;
       this.$router.push({ path: `/manage/${item.path}` });
+      this.$store.commit("ADD_ROUTER_NAME", [item.text]);
+
       this.menulist.map(menu => {
         if (menu.id !== item.id) {
           menu.select = false;

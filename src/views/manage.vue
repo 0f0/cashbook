@@ -1,10 +1,12 @@
 <template>
   <div class="manage">
     <custome-nav>
-      <div class="nav-text" slot-scope="props">
-        <i :class="['iconfont', props.item.icon]"></i>
-        {{props.item.text}}
-      </div>
+      <template v-slot:default="props">
+        <div class="nav-text">
+          <i :class="['iconfont', props.item.icon]"></i>
+          {{props.item.text}}
+        </div>
+      </template>
     </custome-nav>
     <div class="manage-right">
       <custome-header></custome-header>
