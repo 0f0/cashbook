@@ -10,7 +10,9 @@
     </custome-nav>
     <div class="manage-right">
       <custome-header></custome-header>
-      <router-view></router-view>
+      <div class="routermain">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +45,12 @@ export default {
   }
   .manage-right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     background: #f4f4f4;
+    .routermain{
+      flex: 1;
+    }
   }
 }
 </style>

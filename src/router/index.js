@@ -13,6 +13,8 @@ const Template = () => import('@/views/template/template')
 const PersonProperty = () => import('@/views/property/personproperty')
 const Classes = () => import('@/views/classes/classes')
 
+const HomeMain = ()=>import("@/views/home/hometable")
+
 const router = new Router({
   mode: 'history',
   routes: [{
@@ -35,16 +37,26 @@ const router = new Router({
           path: 'home',
           component: Home,
           name: 'home',
+          children: [
+            {
+              path: 'hometable',
+              component: HomeMain,
+              meta: {
+                title:"主页"
+              }
+            }
+          ],
           meta: {
-            title: ['首页']
-          }
+            title: '首页'
+          },
+         
         },
         {
           path: 'tallybook',
           component: Tallybook,
           name: 'tallybook',
           meta: {
-            title: ['记账本']
+            title: '记账本'
           }
         },
         {
@@ -52,7 +64,7 @@ const router = new Router({
           component: Statement,
           name: 'statement',
           meta: {
-            title: ['统计报表']
+            title: '统计报表'
           }
         },
         {
@@ -60,7 +72,7 @@ const router = new Router({
           component: Template,
           name: 'template',
           meta: {
-            title: ['账本模板']
+            title: '账本模板'
           }
         },
         {
@@ -68,7 +80,7 @@ const router = new Router({
           component: PersonProperty,
           name: 'property',
           meta: {
-            title: ['个人资产']
+            title: '个人资产'
           }
         },
         {
@@ -76,7 +88,7 @@ const router = new Router({
           component: Classes,
           name: 'classes',
           meta: {
-            title: ['账本类别']
+            title: '账本类别'
           }
         }
       ]

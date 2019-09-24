@@ -24,7 +24,7 @@ export default {
           text: "首页",
           path: "home",
           icon: "iconshouye",
-          select: true
+          select: false
         },
         {
           id: "522",
@@ -65,38 +65,51 @@ export default {
     };
   },
   mounted() {
-    console.log("mout");
     this.addinitname();
   },
 
   methods: {
     addinitname() {
-      // this.$router.push({ path: "/manage/home" });
-      this.$store.commit("ADD_ROUTER_NAME", this.$route.meta.title);
-      this.menulist.map(item => {
-        if (item.path === this.$route.name) {
-          item.select = true;
-        } else {
-          item.select = false;
-        }
+      this.$store.commit("ADD_ROUTER_NAME", this.$route);
+      let routeArray = [];
+      this.$route.matched.map(routeitem => {
+        routeArray.push(routeitem.path);
       });
+      let max = this.menulist.length;
+      for (let i = 0; i < max; i++) {
+        if (routeArray.indexOf(`/manage/${this.menulist[i].path}`) === 0) {
+          this.$set(this.menulist[i], "select", true);
+          continue;
+        } else {
+          this.$set(this.menulist[i], "select", false);
+        }
+      }
+    },
+    changeMenuList() {
+      let routeArray = [];
+      this.$route.matched.map(routeitem => {
+        routeArray.push(routeitem.path);
+      });
+      let max = this.menulist.length;
+      for (let i = 0; i < max; i++) {
+        if (routeArray.indexOf(`/manage/${this.menulist[i].path}`) === 0) {
+          this.$set(this.menulist[i], "select", true);
+          continue;
+        } else {
+          this.$set(this.menulist[i], "select", false);
+        }
+      }
     },
     selectitem(item) {
       let path = `/manage/${item.path}`;
       if (this.$route.path === path) return;
       this.$router.push({ path: `/manage/${item.path}` });
-      this.menulist.map(menu => {
-        if (menu.id !== item.id) {
-          menu.select = false;
-        } else {
-          menu.select = true;
-        }
-      });
     }
   },
   watch: {
-    "$route"(newvalue, oldvalue) {
-      this.$store.commit("ADD_ROUTER_NAME", newvalue.meta.title);
+    $route(newvalue, oldvalue) {
+      this.$store.commit("ADD_ROUTER_NAME", newvalue);
+      this.changeMenuList();
     }
   }
 };

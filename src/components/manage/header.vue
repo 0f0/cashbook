@@ -2,8 +2,9 @@
   <div class="header">
     <div>
       <breadcrumb class="header-bread">
-        <breadcrumbitem v-for="(item,index) in name" :key="index">{{item}}</breadcrumbitem>
-        <!-- <breadcrumbitem>{{name}}</breadcrumbitem> -->
+        <breadcrumbitem v-for="(item,index) in name" :key="index">
+          <router-link :to="item.path"> {{item.meta.title}}</router-link>
+        </breadcrumbitem>
       </breadcrumb>
     </div>
     <div>用户</div>
@@ -24,11 +25,16 @@ export default {
   },
   computed: {
     ...mapGetters({
-      name: "queryRouterName"
+      name: "queryRouterName",
     })
   },
   mounted() {
     console.log("router", this.$route);
+  },
+  watch:{
+      "$route"(newvalue, oldvalue) {
+      console.log('header',newvalue)
+    }
   }
 };
 </script>
@@ -39,6 +45,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px 20px;
   background: #fff;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.03);
   .header-bread {

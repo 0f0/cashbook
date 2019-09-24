@@ -14,7 +14,12 @@ export default {
 
 <style lang="scss" scoped>
 .breadcrumbitem {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  a{
+    text-decoration:none;
+    color: #444;
+  }
   //   font-family: "ZapfEllipt BT";
 }
 </style>
