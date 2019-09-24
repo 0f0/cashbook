@@ -3,6 +3,7 @@
     <div>
       <breadcrumb class="header-bread">
         <breadcrumbitem v-for="(item,index) in name" :key="index">{{item}}</breadcrumbitem>
+        <!-- <breadcrumbitem>{{name}}</breadcrumbitem> -->
       </breadcrumb>
     </div>
     <div>用户</div>

@@ -85,8 +85,6 @@ export default {
       let path = `/manage/${item.path}`;
       if (this.$route.path === path) return;
       this.$router.push({ path: `/manage/${item.path}` });
-      this.$store.commit("ADD_ROUTER_NAME", [item.text]);
-
       this.menulist.map(menu => {
         if (menu.id !== item.id) {
           menu.select = false;
@@ -94,6 +92,11 @@ export default {
           menu.select = true;
         }
       });
+    }
+  },
+  watch: {
+    "$route"(newvalue, oldvalue) {
+      this.$store.commit("ADD_ROUTER_NAME", newvalue.meta.title);
     }
   }
 };
