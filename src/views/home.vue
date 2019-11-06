@@ -1,7 +1,11 @@
 <template>
   <div class="home">
-    主页
-    <!-- <router-view></router-view> -->
+    <div class="home-top">
+      <div class="home-today"></div>
+      <div class="home-today"></div>
+      <div class="home-today"></div>
+    </div>
+    <div class="home-chart">bottom</div>
   </div>
 </template>
 
@@ -10,17 +14,37 @@ export default {
   data() {
     return {};
   },
-  methods:{
-    // openrouter(){
-    //   this.$router.push({path:'/manage/home/hometable'})
-    // }
-  }
+  methods: {}
 };
 </script>
 
 <style lang="scss" scoped>
-  .home{
-    height: 100%;
-    background: rebeccapurple;
+.home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  .home-top {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+    .home-today {
+      background: #fff;
+      flex: 1;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    & :not(:first-child) {
+      margin-left: 10px;
+    }
   }
+  .home-chart {
+    flex: 2;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+}
 </style>

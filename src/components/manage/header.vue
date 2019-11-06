@@ -3,7 +3,7 @@
     <div>
       <breadcrumb class="header-bread">
         <breadcrumbitem v-for="(item,index) in name" :key="index">
-          <router-link :to="item.path"> {{item.meta.title}}</router-link>
+          <router-link :to="item.path">{{item.meta.title}}</router-link>
         </breadcrumbitem>
       </breadcrumb>
     </div>
@@ -25,16 +25,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      name: "queryRouterName",
+      name: "queryRouterName"
     })
-  },
-  mounted() {
-    console.log("router", this.$route);
-  },
-  watch:{
-      "$route"(newvalue, oldvalue) {
-      console.log('header',newvalue)
-    }
   }
 };
 </script>

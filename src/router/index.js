@@ -13,7 +13,6 @@ const Template = () => import('@/views/template/template')
 const PersonProperty = () => import('@/views/property/personproperty')
 const Classes = () => import('@/views/classes/classes')
 
-const HomeMain = ()=>import("@/views/home/hometable")
 
 const router = new Router({
   mode: 'history',
@@ -37,19 +36,9 @@ const router = new Router({
           path: 'home',
           component: Home,
           name: 'home',
-          children: [
-            {
-              path: 'hometable',
-              component: HomeMain,
-              meta: {
-                title:"主页"
-              }
-            }
-          ],
           meta: {
             title: '首页'
           },
-         
         },
         {
           path: 'tallybook',
