@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="home-top">
-      <div class="home-today"></div>
+      <div class="home-today">这是主页</div>
       <div class="home-today"></div>
       <div class="home-today"></div>
     </div>
